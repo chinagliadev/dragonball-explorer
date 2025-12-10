@@ -14,7 +14,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 999;
+    z-index: 10;
     padding: 20px 160px;
 
 }
@@ -29,7 +29,43 @@ body {
 }
 
 .conteudo-header .img-header {
-    width: 300px;
+    width: 200px;
+}
+
+.hero {
+    position: relative;
+    min-height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.733)),
+        url(../img/background-hero-dragonball.jpg) center/cover no-repeat;
+    z-index: 1;
+    margin-top: -150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-conteudo {
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.hero-conteudo h1 {
+    font-size: 5rem;
+    font-weight: bold;
+    color: white;
+    animation: fade-down 1s ease forwards;
+}
+
+.hero-conteudo p {
+    font-size: 1.6rem;
+    margin-top: 10px;
+    color: white;
+    animation: fade-up 1s ease forwards;
 }
 
 .sessao-pesquisa {
@@ -79,11 +115,27 @@ body {
     text-decoration: none;
 }
 
+.hero-detalhes {
+    position: relative;
+    min-height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.651)),
+        url(../img/background\ detalhes\ dragonball.jpg) center/cover no-repeat;
+    z-index: 1;
+    margin-top: -150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+
 .sessao-detalhes {
     min-height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
 }
 
 .sessao-detalhes .conteudo-detalhes {
@@ -91,64 +143,90 @@ body {
     max-width: 1200px;
     display: flex;
     flex-direction: column;
-    padding: 0px 20px;
-}
-
-.sessao-detalhes .acoes {
-    width: 100%;
-    max-width: 800px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.acoes>a {
-    text-decoration: none;
-    background-color: rgb(89, 135, 196);
-    padding: 12px;
-    border-radius: 10px;
-    color: whitesmoke;
-    transition: 0.3s;
-}
-
-.acoes>a:hover {
-    background-color: rgb(56, 113, 187);
-    color: whitesmoke;
-    transition: 0.3s;
-}
-
-.acoes>button {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: #fa4646;
-    color: white;
-    border: none;
-    font-size: 16px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: 0.3s;
-}
-
-.acoes>button:hover{
-    background-color: #dd1c1c;
-    transition: 0.3s;
+    margin-top: 150px;
 }
 
 .img-detalhes {
-    width: 700px;
-    height: 500px;
-    object-fit: contain;  
-    border-radius: 20px;
-    background-color: #10182b; 
+    width: 100%;
+    max-height: 70vh;
+    height: auto;
+    object-fit: contain;
+   animation: flutuar 3s ease-in-out infinite alternate;
 }
 
-.planeta-card{
+.img-planeta{
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 16px;
+}
+
+.desc-personagem{
+    height: 200px;
+    font-size: 20px;
+}
+
+
+@keyframes flutuar {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes fade-down {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px) scale(0.9);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px) scale(1);
+    }
+}
+
+@keyframes fade-up {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px) scale(1);
+    }
+}
+
+
+.planeta-card {
     border-radius: 50%;
     width: 100%;
     object-fit: contain;
 }
+
+.card-personagem {
+    animation: fade-up 0.8s;
+    background: rgba(75, 75, 75, 0.144);
+    border-radius: 16px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+}
+
+.card-personagem .nome-card {
+    font-size: 50px;
+}
+
+
 
 @media (max-width: 768px) {
 

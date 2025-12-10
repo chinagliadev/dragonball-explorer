@@ -47,6 +47,7 @@ async function carregarPersonagemDetalhes() {
     const idPersonagem = urlParametro.get('id');
 
     const response = await fetch(`https://dragonball-api.com/api/characters/${idPersonagem}`);
+    
     if (!response.ok) {
         console.error("Erro ao carregar personagem!");
         return;
@@ -54,28 +55,84 @@ async function carregarPersonagemDetalhes() {
 
     const personagem = await response.json();
 
-    document.getElementById('img-personagem').src = personagem.image;
+    const planeta = personagem.originPlanet
+    document.getElementById('planeta-personagem-card').innerHTML = planeta.name
+    document.getElementById('img-planeta').src = planeta.image
+
+    console.log(planeta)
+
+    const imgPersonagemPrincipal = document.getElementById('img-personagem');
+    
+    imgPersonagemPrincipal.src = personagem.image;
     document.getElementById('nome-personagem-card').innerHTML = personagem.name;
     document.getElementById('poder-luta').innerHTML = personagem.ki;
     document.getElementById('raca').innerHTML = personagem.race;
+    document.getElementById('equipe').innerHTML = personagem.affiliation;
+    document.getElementById('genero').innerHTML = personagem.gender;
+    document.getElementById('descricao-personagem').innerHTML = personagem.description
 
-    const transformacao = personagem.transformations
-    console.log(transformacao)
-    let htmlCard = ''
-    
-    transformacao.forEach(element =>{
-         htmlCard += `  <div class="col-lg-3 col-sm-12"> 
+    const transformacoes = personagem.transformations;
+    let htmlCardsTransformacao = '';
+
+    transformacoes.forEach(element => {
+        htmlCardsTransformacao += `
+            <div class="col-lg-3 col-sm-12"> 
+                <a href="" 
+                   class="link-cards card-transformacao" 
+                   data-image="${element.image}" 
+                   data-id="${element.id}"
+                   data-name-transformacao="${element.name}"
+                   data-ki-transformacao="${element.ki || 'N/A'}"
+                   data-race-transformacao="${element.race || personagem.race}" 
+                >
                     <figure class="col-card p-3">
-                        <img src="${element.image}" class="img-card img-fluid" alt="Imagem do personagem ${element.name}">
+                        <img src="${element.image}" class="img-card img-fluid" alt="Imagem da transformação ${element.name}">
                         <figcaption class="mt-3 text-black">
                             <h2 class="fs-4 text-center">${element.name}</h2>
                         </figcaption>
                     </figure>
-                </div>`
+                </a>
+            </div>
+        `;
+    });
+    
+    const linhaTransformacoes = document.getElementById('linha-transformacoes');
+    linhaTransformacoes.innerHTML = htmlCardsTransformacao;
+    
+    const cardsTransformacao = linhaTransformacoes.querySelectorAll('.card-transformacao');
+    
+    const nomePersonagemEl = document.getElementById('nome-personagem-card');
+    const poderLutaEl = document.getElementById('poder-luta');
+    const racaEl = document.getElementById('raca'); 
 
-        document.getElementById('linha-transformacoes').innerHTML = htmlCard
-    })
+    cardsTransformacao.forEach(card => {
+        card.addEventListener('click', (event) => {
+            event.preventDefault(); 
+            
+            const novaImagemUrl = card.getAttribute('data-image');
+            const novoNome = card.getAttribute('data-name-transformacao'); 
+            const novoKi = card.getAttribute('data-ki-transformacao'); 
+            const novaRaca = card.getAttribute('data-race-transformacao'); 
+            
+            if (imgPersonagemPrincipal) {
+                imgPersonagemPrincipal.src = novaImagemUrl;
+            }
+
+            if (nomePersonagemEl && novoNome) {
+                nomePersonagemEl.innerHTML = novoNome;
+            }
+            if (poderLutaEl && novoKi) {
+                poderLutaEl.innerHTML = novoKi;
+            }
+            if (racaEl && novaRaca) {
+                racaEl.innerHTML = novaRaca;
+            }
+            
+        });
+    });
+
 }
 
+carregarPersonagemDetalhes();
 
-carregarPersonagemDetalhes()
+
