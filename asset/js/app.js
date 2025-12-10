@@ -1,27 +1,29 @@
-async function carregarPersonagem() {
+let paginaAtual = 1;
+const limite = 8;
+
+async function carregarPersonagens(pagina = 1) {
     try {
-        const response = await fetch('https://dragonball-api.com/api/characters');
-        
-        if (!response.ok) {
-            throw new Error(`Erro HTTP! Status: ${response.status}`);
-        }
+        const response = await fetch(`https://dragonball-api.com/api/characters?page=${pagina}&limit=${limite}`);
+        if (!response.ok) throw new Error(`Erro HTTP! Status: ${response.status}`);
+
         const data = await response.json();
-        return data.items; 
-                           
+        return data;
     } catch (error) {
         console.error("Houve um erro:", error);
-        return []; 
+        return { items: [], meta: {}, links: {} };
     }
 }
 
-async function listarPersonagens() {
-    const linha = document.getElementById('linha-cards');
 
-    const dados = await carregarPersonagem(); 
+async function listarPersonagens(pagina = 1) {
+    const linha = document.getElementById('linha-cards');
+    const paginasContainer = document.querySelector('.paginas');
+
+    const data = await carregarPersonagens(pagina);
+    const dados = data.items;
 
     let htmlCards = '';
-    
-    dados.forEach(element => { 
+    dados.forEach(element => {
         htmlCards += `
             <div class="col-lg-3 col-sm-12"> 
                 <a href="detalhes.html?id=${element.id}" class="link-cards">
@@ -32,11 +34,24 @@ async function listarPersonagens() {
                         </figcaption>
                     </figure>
                 </a>
-                </div>
+            </div>
         `;
     });
-
     linha.innerHTML = htmlCards;
+
+    const meta = data.meta;
+    const links = data.links;
+
+  let htmlPaginas = `
+    <li><button ${!links.first ? 'disabled' : ''} onclick="listarPersonagens(1)">Primeira</button></li>
+    <li><button ${!links.previous ? 'disabled' : ''} onclick="listarPersonagens(${meta.currentPage - 1})">Anterior</button></li>
+    <li>Página ${meta.currentPage} de ${meta.totalPages}</li>
+    <li><button ${!links.next ? 'disabled' : ''} onclick="listarPersonagens(${meta.currentPage + 1})">Próxima</button></li>
+    <li><button ${!links.last ? 'disabled' : ''} onclick="listarPersonagens(${meta.totalPages})">Última</button></li>
+`;
+
+
+    paginasContainer.innerHTML = `<ul>${htmlPaginas}</ul>`;
 }
 
 listarPersonagens();
@@ -70,6 +85,9 @@ async function carregarPersonagemDetalhes() {
     document.getElementById('equipe').innerHTML = personagem.affiliation;
     document.getElementById('genero').innerHTML = personagem.gender;
     document.getElementById('descricao-personagem').innerHTML = personagem.description
+    
+    document.getElementById('nome-descricao').innerHTML = personagem.name
+
 
     const transformacoes = personagem.transformations;
     let htmlCardsTransformacao = '';

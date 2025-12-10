@@ -20,11 +20,14 @@
     </header>
 
     <main class="hero-detalhes">
+
         <section class="sessao-detalhes">
             <div class="conteudo-detalhes">
+                <a href="./index.html" class="m-3 btn-voltar"><i class="bi bi-arrow-left"></i> Voltar</a>
                 <div class="corpo-detalhes mt-3">
                     <div class="row">
                         <div class="col-lg-6 d-flex justify-content-center align-items-center">
+
                             <img class="img-detalhes" src="" alt="" id="img-personagem">
                         </div>
                         <div class="col-lg-6">
@@ -32,7 +35,6 @@
                                 <div class="col-lg-12">
                                     <div class="card-personagem p-3 ms-2">
                                         <h2 id="nome-personagem-card" class="mb-3 fw-bold nome-card"></h2>
-
                                         <div class="row">
                                             <div class="col-lg-6">
 
@@ -84,14 +86,25 @@
     <section class="sessao-transformacoes">
         <div class="container">
             <h2 class="mb-4 fw-bold text-center mt-3">Transformações</h2>
-            <div id="linha-transformacoes" class="row"></div>
+            <div class="alert alert-info" role="alert">
+               personagem não possui transformações
+            </div>
+            <div id="linha-transformacoes" class="row">
+            </div>
         </div>
     </section>
 
-    <section class="sessao-descricao mb-5">
+    <section class="sessao-descricao mb-5 mt-5">
         <div class="container">
-            <h2  class="mb-4 fw-bold text-center mt-3">Descricao</h2>
-            <p id="descricao-personagem" class="desc-personagem"></p>
+            <div class="row">
+                <div class="col-lg-6 d-flex justify-content-center">
+                    <img src="./asset/img/descricao-personagem.png" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="mb-4 fw-bold text-center mt-3">Descricao do <span id="nome-descricao"></span></h2>
+                    <p id="descricao-personagem" class="desc-personagem"></p>
+                </div>
+            </div>
         </div>
     </section>
 
