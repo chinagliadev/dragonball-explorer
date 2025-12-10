@@ -1,0 +1,170 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #dee6ef;
+    padding-top: 150px;
+}
+
+.cabecalho {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    padding: 20px 160px;
+
+}
+
+.conteudo-header {
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.144);
+    border-radius: 16px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.conteudo-header .img-header {
+    width: 300px;
+}
+
+.sessao-pesquisa {
+    width: 100%;
+    padding: 20px 160px;
+    display: flex;
+    justify-content: center;
+}
+
+.input-pesquisar {
+    width: 700px;
+    max-width: 90%;
+    border: 1px solid rgb(168, 168, 168);
+    padding: 7px;
+    border-radius: 10px;
+    outline: none;
+}
+
+.sessao-cards {
+    padding: 20px 160px;
+}
+
+.sessao-cards .col-card {
+    max-width: 500px;
+
+    background-color: transparent;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #e4e4e4;
+}
+
+.col-card .img-card {
+    width: 100%;
+    height: 370px;
+    object-fit: contain;
+    object-position: center;
+    transition: 0.3s;
+}
+
+.col-card .img-card:hover {
+    transform: scale(1.1);
+    transition: 0.3s;
+}
+
+.link-cards {
+    text-decoration: none;
+}
+
+.sessao-detalhes {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sessao-detalhes .conteudo-detalhes {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 20px;
+}
+
+.sessao-detalhes .acoes {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.acoes>a {
+    text-decoration: none;
+    background-color: rgb(89, 135, 196);
+    padding: 12px;
+    border-radius: 10px;
+    color: whitesmoke;
+    transition: 0.3s;
+}
+
+.acoes>a:hover {
+    background-color: rgb(56, 113, 187);
+    color: whitesmoke;
+    transition: 0.3s;
+}
+
+.acoes>button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #fa4646;
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.acoes>button:hover{
+    background-color: #dd1c1c;
+    transition: 0.3s;
+}
+
+.img-detalhes {
+    width: 700px;
+    height: 500px;
+    object-fit: contain;  
+    border-radius: 20px;
+    background-color: #10182b; 
+}
+
+.planeta-card{
+    border-radius: 50%;
+    width: 100%;
+    object-fit: contain;
+}
+
+@media (max-width: 768px) {
+
+    .cabecalho,
+    .sessao-pesquisa {
+        padding: 10px 20px;
+    }
+
+    .conteudo-header .img-header {
+        width: 100%;
+        max-width: 250px;
+        height: auto;
+    }
+
+    .input-pesquisar {
+        width: 100%;
+        max-width: none;
+    }
+}
