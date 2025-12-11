@@ -11,17 +11,12 @@
 
 body {
     background-color: #dee6ef;
-    padding-top: 150px;
     font-family: 'Roboto Rubik';
 }
 
 .cabecalho {
-    position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
-    z-index: 10;
-    padding: 20px 160px;
+    padding: 3px 160px;
 
 }
 
@@ -35,7 +30,7 @@ body {
 }
 
 .conteudo-header .img-header {
-    width: 200px;
+    width: 150px;
 }
 
 .hero {
@@ -44,7 +39,6 @@ body {
     background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.733)),
         url(../img/background-hero-dragonball.jpg) center/cover no-repeat;
     z-index: 1;
-    margin-top: -150px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -81,10 +75,10 @@ body {
 }
 
 .input-pesquisar {
-    width: 500px;
+    width: 350px;
     max-width: 90%;
     border: 1px solid rgb(211, 211, 211);
-    padding: 7px;
+    padding: 8px;
     border-radius: 10px;
     outline: none;
 }
@@ -148,15 +142,38 @@ body {
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border: 1px solid rgb(250, 250, 250);
+    height: 300px;
 }
 
 .col-card .img-card {
-    width: 100%;
-    height: 370px;
+    width: 50px;
     object-fit: contain;
     object-position: center;
     transition: 0.3s;
+    height: 100px;
 }
+
+.img-card-personagem {
+    width: 100%;
+    object-fit: contain;
+    object-position: center;
+    transition: 0.3s;
+    max-height: 200px !important;
+}
+
+.sessao-cards .col-card:hover {
+    transform: scale(1.02);
+    transition: 0.3s;
+}
+
+
+.img-card-personagem:hover {
+    transform: scale(1.05);
+    transition: 0.3s;
+}
+
+
+
 
 .col-card .img-card:hover {
     transform: scale(1.1);
@@ -168,12 +185,9 @@ body {
 }
 
 .hero-detalhes {
-    position: relative;
     min-height: 100vh;
     background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.651)),
         url(../img/background\ detalhes\ dragonball.jpg) center/cover no-repeat;
-    z-index: 1;
-    margin-top: -150px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -214,7 +228,6 @@ body {
     max-width: 1200px;
     display: flex;
     flex-direction: column;
-    margin-top: 150px;
 }
 
 .img-detalhes {
@@ -223,6 +236,16 @@ body {
     height: auto;
     object-fit: contain;
     animation: flutuar 3s ease-in-out infinite alternate;
+}
+
+.sessao-transformacoes {
+    animation: fade-up 0.8s;
+    background: rgba(75, 75, 75, 0.144);
+    border-radius: 16px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
 }
 
 .img-planeta {
@@ -277,12 +300,7 @@ body {
 }
 
 
-.card-transformacao{
-    background: rgba(75, 75, 75, 0.144);
-    border-radius: 16px;
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+.card-transformacao {
     color: white;
 }
 
@@ -290,6 +308,7 @@ body {
     border-radius: 50%;
     width: 100%;
     object-fit: contain;
+    font-size: 30px;
 }
 
 .card-personagem {
@@ -303,7 +322,7 @@ body {
 }
 
 .card-personagem .nome-card {
-    font-size: 50px;
+    font-size: 30px;
 }
 
 

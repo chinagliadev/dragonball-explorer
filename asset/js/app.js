@@ -14,6 +14,19 @@ async function carregarPersonagens(pagina = 1) {
     }
 }
 
+async function listarTodosPersonagens() {
+    try {
+        const response = await fetch(`https://dragonball-api.com/api/characters?limit=${limite}`);
+        if (!response.ok) throw new Error(`Erro HTTP! Status: ${response.status}`);
+
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error("Houve um erro:", error);
+        return { items: [], meta: {}, links: {} };
+    }
+}
+
 
 async function listarPersonagens(pagina = 1) {
     const linha = document.getElementById('linha-cards');
@@ -28,7 +41,7 @@ async function listarPersonagens(pagina = 1) {
             <div class="col-lg-3 col-sm-12"> 
                 <a href="detalhes.html?id=${element.id}" class="link-cards">
                     <figure class="col-card p-3">
-                        <img src="${element.image}" class="img-card img-fluid" alt="Imagem do personagem ${element.name}">
+                        <img src="${element.image}" class="img-card-personagem img-fluid" alt="Imagem do personagem ${element.name}">
                         <figcaption class="mt-3 text-black">
                             <h2 class="fs-4 text-center">${element.name}</h2>
                         </figcaption>
@@ -93,8 +106,8 @@ async function carregarPersonagemDetalhes() {
     let htmlCardsTransformacao = '';
 
     transformacoes.forEach(element => {
-        htmlCardsTransformacao += `
-            <div class="col-lg-3 col-sm-12"> 
+        htmlCardsTransformacao += /*html*/`
+            <div class="col-lg-2"> 
                 <a href="" 
                    class="link-cards card-transformacao" 
                    data-image="${element.image}" 
@@ -103,11 +116,8 @@ async function carregarPersonagemDetalhes() {
                    data-ki-transformacao="${element.ki || 'N/A'}"
                    data-race-transformacao="${element.race || personagem.race}" 
                 >
-                    <figure class="col-card p-3">
+                    <figure class="col-card">
                         <img src="${element.image}" class="img-card img-fluid" alt="Imagem da transformação ${element.name}">
-                        <figcaption class="mt-3 text-black">
-                            <h2 class="fs-4 text-center">${element.name}</h2>
-                        </figcaption>
                     </figure>
                 </a>
             </div>
@@ -151,6 +161,26 @@ async function carregarPersonagemDetalhes() {
 
 }
 
+async function pesquisarPersonagem() {
+    try {
+        const dados = await carregarPersonagens();
+
+        const listaNomes = [];
+
+        console.log(dados.items[0].name);
+
+        dados.items.forEach((element, index) => {
+            listaNomes.push(element.name);
+        });
+
+        console.dir(listaNomes);
+
+    } catch (error) {
+        console.log("Erro:", error);
+    }
+}
+
+pesquisarPersonagem()
 carregarPersonagemDetalhes();
 
 
