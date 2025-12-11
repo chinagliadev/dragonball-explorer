@@ -10,9 +10,11 @@
 }
 
 body {
-    background-color: #dee6ef;
     font-family: 'Roboto Rubik';
+    
 }
+
+
 
 .cabecalho {
     width: 100%;
@@ -72,15 +74,37 @@ body {
     width: 100%;
     padding: 20px 160px;
     display: flex;
+    align-items: center;
+}
+
+.input-container {
+    position: relative;
+    width: 350px;
+    max-width: 90%;
 }
 
 .input-pesquisar {
-    width: 350px;
-    max-width: 90%;
-    border: 1px solid rgb(211, 211, 211);
-    padding: 8px;
+    width: 100%;
+    border: none;
+    padding: 8px 10px;
+    padding-right: 35px;
     border-radius: 10px;
     outline: none;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+}
+
+.input-pesquisar::placeholder {
+    color: #ccc;
+}
+
+.search-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    color: #888;
+    pointer-events: none;
 }
 
 .sessao-cards {
@@ -134,10 +158,16 @@ body {
     cursor: not-allowed;
 }
 
+.sessao-cards {
+    min-height: 80vh;
+}
 
 .sessao-cards .col-card {
     max-width: 500px;
-    background-color: transparent;
+    background: rgba(255, 255, 255, 0.144);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -171,8 +201,6 @@ body {
     transform: scale(1.05);
     transition: 0.3s;
 }
-
-
 
 
 .col-card .img-card:hover {
@@ -323,6 +351,20 @@ body {
 
 .card-personagem .nome-card {
     font-size: 30px;
+}
+
+.circle-glass {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    filter: blur(30px);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    box-shadow: 0 0 50px 20px rgba(255, 255, 255, 0.5);
 }
 
 
