@@ -9,16 +9,24 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-    
+
 </head>
 
 <body class="bg-light">
     <header class="cabecalho">
-        <div class="conteudo-header d-flex align-items-center justify-content-center">
-            <img class="img-fluid img-header" src="./asset/img/Dragon_Ball_Z_Logo_.png"
-                alt="Logo do Dragon ball z Header">
+        <div class="conteudo-header container">
+            <img class="img-header" src="./asset/img/Dragon_Ball_Z_Logo_.png" alt="Logo do Dragon Ball Z">
+
+            <nav>
+                <ul class="itens-header">
+                    <li><a href="./index.html">Início</a></li>
+                    <li><a href="#">Personagens favoritos</a></li>
+                    <li><a target="_blank" href="https://web.dragonball-api.com/">API</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
+
 
     <main class="hero">
         <div class="hero-conteudo text-white">
@@ -27,26 +35,32 @@
         </div>
     </main>
 
-    <section class="sessao-pesquisa">
+    <section class="sessao-pesquisa container mt-3">
         <div class="input-container"> <input type="text" id="txtPersonagem" placeholder="Pesquisar personagem"
                 class="input-pesquisar">
             <i class="bi bi-search search-icon"></i>
         </div>
         <div class="container-dropdown">
             <select class="filtro_pesquisa" name="filtro-personagens" id="filtro-personagens">
-                <option value="">Sayjin</option>
-                <option value="">Freeza</option>
-                <option value="">Sayjin</option>
-                <option value="">Sayjin</option>
-                <option value="">Sayjin</option>
+                <option value="" disabled selected>Selecionar Raça</option>
+                <option value="Human">Human</option>
+                <option value="Saiyan">Saiyan</option>
+                <option value="Namekian">Namekian</option>
+                <option value="Majin">Majin</option>
+                <option value="Frieza Race">Frieza Race</option>
+                <option value="Android">Android</option>
+                <option value="Jiren Race">Jiren Race</option>
+                <option value="God">God</option>
+                <option value="Angel">Angel</option>
+                <option value="Evil">Evil / Demon</option>
+                <option value="Nucleico">Nucleico</option>
+                <option value="Nucleico benigno">Nucleico Benigno</option>
+                <option value="Todos">Todos</option>
             </select>
         </div>
     </section>
 
-    <section class="sessao-cards">
-        <div class="alert alert-info d-none" id="mensagem-aviso" role="alert">
-            nenhum personagem encontrado
-        </div>
+    <section class="sessao-cards container">
         <div class="row" id="linha-cards">
         </div>
     </section>
@@ -57,8 +71,8 @@
         </ul>
     </section>
 
-<script src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"></script>
-<script src="./asset/js/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"></script>
+    <script src="./asset/js/app.js"></script>
 
 </body>
 

@@ -1,3 +1,18 @@
+const personagemCurtidos = []
+
+function alternarCurtida(idPersonagem){
+    const id = Number(idPersonagem)
+    const indice = personagemCurtidos.indexOf(id)
+
+    if(indice === -1){
+        personagemCurtidos.push(id)
+        console.log('Personagem curtido com sucesso')
+    }else{
+        personagemCurtidos.splice(indice, 1)
+        console.log('Personagem removido com sucesso')
+    }
+}
+
 let paginaAtual = 1;
 const limite = 8;
 
@@ -26,27 +41,28 @@ async function listarPersonagens(pagina = 1) {
 
     dados.forEach(element => {
         htmlCards += `
-    <div class="col-lg-3 col-sm-12"> 
+    <div class="col-lg-3 col-md-6 col-sm-12"> 
+        <figure class="col-card p-3">
+            <button class="btn-curtir" data-id=${element.id}><i class="bi bi-heart"></i></button>
         <a href="detalhes.html?id=${element.id}" class="link-cards">
-            <figure class="col-card p-3">
-                
-                <div class="circle-glass"></div>
+            <div class="circle-glass"></div>
 
-                <img src="${element.image}" class="img-card-personagem img-fluid"
+            <img src="${element.image}" class="img-card-personagem img-fluid"
                      style="position: relative; z-index: 2;">
 
-                <figcaption class="mt-3 text-black">
-                    <h2 class="fs-4 text-center">${element.name}</h2>
-                </figcaption>
-
-            </figure>
+            <figcaption class="mt-3 text-black">
+                <h2 class="fs-4 text-center">${element.name}</h2>
+            </figcaption>
         </a>
+
+        </figure>
     </div>`;
     });
 
     linha.innerHTML = htmlCards;
 
     aplicarVibrantEmTodosOsCards();
+    testarAdicionarPersonagemCurtido()
 
     const meta = data.meta;
     const links = data.links;
@@ -145,16 +161,17 @@ async function pesquisarPersonagem(termo) {
 
         dados.forEach(element => {
             html += `
-                <div class="col-lg-3 col-sm-12"> 
-                    <a href="detalhes.html?id=${element.id}" class="link-cards">
-                        <figure class="col-card p-3">
+                <div class="col-lg-3 col-md-6 col-sm-12"> 
+                <figure class="col-card p-3">
+                <button class="btn-curtir"><i class="bi bi-heart"></i></button>
+                <a href="detalhes.html?id=${element.id}" class="link-cards">
                             <div class="circle-glass"></div>
                             <img src="${element.image}" class="img-card-personagem img-fluid" style="position: relative; z-index: 2;">
                             <figcaption class="mt-3 text-black">
                                 <h2 class="fs-4 text-center">${element.name}</h2>
                             </figcaption>
+                            </a>
                         </figure>
-                    </a>
                 </div>`;
         });
 
@@ -191,7 +208,7 @@ function aplicarVibrantEmTodosOsCards() {
                 const corVibrante = palette.Vibrant || palette.LightVibrant || palette.Muted;
 
                 if (corVibrante) {
-                    circle.style.background = `${corVibrante.getHex()}80`; 
+                    circle.style.background = `${corVibrante.getHex()}80`;
                     circle.style.border = `1px solid ${corVibrante.getHex()}50`;
 
                     card.style.backgroundColor = "#ffffff";
@@ -202,8 +219,74 @@ function aplicarVibrantEmTodosOsCards() {
     });
 }
 
+async function filtarPersonagens(termo) {
+    try {
 
+        const response = await fetch(`https://dragonball-api.com/api/characters?race=${termo}`)
+
+        const dados = await response.json()
+
+        console.log(dados)
+
+        const linha = document.getElementById('linha-cards');
+
+        let html = '';
+
+        dados.forEach(element => {
+            html += `
+                <div class="col-lg-3 col-md-6 col-sm-12"> 
+                <figure class="col-card p-3">
+                <button class="btn-curtir"><i class="bi bi-heart"></i></button>
+                <a href="detalhes.html?id=${element.id}" class="link-cards">
+                            <div class="circle-glass"></div>
+                            <img src="${element.image}" class="img-card-personagem img-fluid" style="position: relative; z-index: 2;">
+                            <figcaption class="mt-3 text-black">
+                                <h2 class="fs-4 text-center">${element.name}</h2>
+                            </figcaption>
+                            </a>
+                        </figure>
+                </div>`;
+        });
+
+        linha.innerHTML = html;
+        aplicarVibrantEmTodosOsCards()
+
+    } catch (error) {
+          console.error("Erro na pesquisa:", error);
+    }
+}
+
+function configurarFiltro(){
+    const filtro = document.getElementById('filtro-personagens');
+    
+    console.log(filtro);
+    
+    
+    filtro.addEventListener('change', function() {
+        const racaSelecionada = filtro.value;
+        console.log('Raça selecionada:', racaSelecionada);
+        filtarPersonagens(racaSelecionada); 
+    });
+}
+
+function testarAdicionarPersonagemCurtido() {
+    const btnCurtidos = document.querySelectorAll('.btn-curtir');
+
+    console.log(`Encontrados ${btnCurtidos.length} botões com a classe .btn-curtir`);
+
+    btnCurtidos.forEach(btnCurtir => {
+        btnCurtir.addEventListener('click', (e) => { 
+            
+            e.preventDefault(); 
+
+            const id = e.currentTarget.getAttribute('data-id');
+
+            alternarCurtida(id); 
+        });
+    });
+}
 
 listarPersonagens();
 carregarPersonagemDetalhes();
 configurarPesquisa();
+configurarFiltro()
