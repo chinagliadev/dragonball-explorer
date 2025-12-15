@@ -11,7 +11,7 @@
 
 body {
     font-family: 'Roboto Rubik';
-    
+
 }
 
 .cabecalho {
@@ -125,13 +125,12 @@ body {
 }
 
 .filtro_pesquisa {
-    appearance: none; 
+    appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
 
     border: 1px solid #ccc;
-    background: #fff url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="%23525252"><polygon points="0,0 20,0 10,12"/></svg>') 
-               no-repeat right 10px center;
+    background: #fff url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="%23525252"><polygon points="0,0 20,0 10,12"/></svg>') no-repeat right 10px center;
     background-size: 14px;
 
     padding: 10px 40px 10px 12px;
@@ -147,7 +146,7 @@ body {
 
 .filtro_pesquisa:focus {
     border-color: #888;
-    box-shadow: 0 0 4px rgba(0,0,0,0.15);
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
 }
 
 .filtro_pesquisa option {
@@ -233,6 +232,59 @@ body {
     min-height: 80vh;
 }
 
+.col-card-curtidos {
+    max-width: 500px;
+    background: rgba(255, 255, 255, 0.144);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgb(250, 250, 250);
+    height: auto;
+    transition: 0.3s;
+}
+
+.col-card-curtidos .btn-curtir {
+    border: none;
+    padding: 10px 15px;
+    color: white;
+    font-size: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+
+
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(209, 22, 62, 0.685);
+    color: rgba(209, 22, 62, 0.685);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.btn-curtir:hover {
+    background: rgba(209, 22, 63, 0.911);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
+    color: white;
+    border: none;
+}
+
+.col-card-curtidos .img-card {
+    width: 50px;
+    object-fit: contain;
+    object-position: center;
+    transition: 0.3s;
+    height: 100px;
+}
+
+.col-card-curtidos:hover {
+    transform: scale(1.02);
+    transition: 0.3s;
+}
+
 .sessao-cards .col-card {
     max-width: 500px;
     background: rgba(255, 255, 255, 0.144);
@@ -243,32 +295,32 @@ body {
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border: 1px solid rgb(250, 250, 250);
-     height: auto;
+    height: auto;
     transition: 0.3s;
 }
 
 .col-card .btn-curtir {
     border: none;
-    padding: 10px 15px; 
+    padding: 10px 15px;
     color: white;
-    font-size: 15px; 
-    border-radius: 10px; 
-    cursor: pointer; 
+    font-size: 15px;
+    border-radius: 10px;
+    cursor: pointer;
 
-  
-    background: rgba(255, 255, 255, 0.2); 
-    backdrop-filter: blur(10px); 
-    -webkit-backdrop-filter: blur(10px); 
-    border: 1px solid rgba(209, 22, 62, 0.685); 
+
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(209, 22, 62, 0.685);
     color: rgba(209, 22, 62, 0.685);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
 }
 
 
 .col-card .btn-curtir:hover {
-    background: rgba(209, 22, 63, 0.911); 
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); 
+    background: rgba(209, 22, 63, 0.911);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
     transform: translateY(-1px);
     color: white;
     border: none;
@@ -474,32 +526,32 @@ body {
 
     .cabecalho,
     .sessao-pesquisa {
-        padding: 10px 20px; 
+        padding: 10px 20px;
     }
 
-    .sessao-pesquisa{
-        flex-direction: column; 
+    .sessao-pesquisa {
+        flex-direction: column;
         gap: 10px;
         width: 100%;
-        padding: 20px; 
+        padding: 20px;
     }
 
     .input-container,
     .container-dropdown,
     .sessao-pesquisa .filtro_pesquisa {
-        width: 100%; 
-        min-width: unset; 
+        width: 100%;
+        min-width: unset;
     }
 
     .conteudo-header {
-        flex-direction: column; 
+        flex-direction: column;
         gap: 15px;
     }
 
     .itens-header {
         gap: 20px;
     }
-    
+
     .conteudo-header .img-header {
         width: 100%;
         max-width: 250px;
@@ -512,66 +564,66 @@ body {
         max-width: none;
     }
 
- 
+
     .sessao-cards {
-        padding: 20px 40px; /
+        padding: 20px 40px;/
     }
-    
+
     .sessao-cards .col-card {
         max-width: 100%;
     }
 
-    .desc-personagem{
+    .desc-personagem {
         font-size: 18px;
     }
 }
 
 @media (max-width: 480px) {
-    
+
     .img-header {
-        width: 80px !important; 
-        height: auto; 
-        transition: width 0.3s ease; 
+        width: 80px !important;
+        height: auto;
+        transition: width 0.3s ease;
     }
 
     .hero {
-        min-height: 50vh; 
+        min-height: 50vh;
     }
 
     .hero-conteudo h1 {
-        font-size: 3rem; 
+        font-size: 3rem;
     }
-    
+
     .hero-conteudo p {
-        font-size: 1.2rem; 
+        font-size: 1.2rem;
     }
 
     .sessao-pesquisa {
-        flex-direction: column; 
+        flex-direction: column;
         gap: 10px;
         width: 100%;
-        padding: 20px; 
+        padding: 20px;
     }
-    
+
     .input-container,
     .container-dropdown,
     .sessao-pesquisa .filtro_pesquisa {
-        width: 100%; 
-        min-width: unset; 
+        width: 100%;
+        min-width: unset;
     }
 
     .sessao-cards {
-        padding: 10px; 
+        padding: 10px;
     }
-    
+
     .desc-personagem {
-        font-size: 15px; 
+        font-size: 15px;
     }
 
     .paginas {
         gap: 10px;
         margin: 20px 0;
-        width: auto; 
+        width: auto;
     }
 
     .paginas ul {
@@ -589,13 +641,81 @@ body {
         padding: 6px 8px;
     }
 
-    .card-personagem{
+    .card-personagem {
         background-color: red;
-       
+
     }
 
-    .desc-personagem{
+    .desc-personagem {
         font-size: 15px;
     }
 
+}
+
+.mensagem-curtido {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+     pointer-events: none;
+}
+
+.mensagem-curtido>p{
+    background: rgba(209, 22, 63, 0.897);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: white;
+    margin-top: 20px;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    padding:10px;
+    border-radius: 7px;
+    font-size: 16px;
+    animation: fade-down 0.8s;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOutUp {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+.animar-entrada p {
+    animation: fadeInDown 0.6s ease forwards;
+}
+
+.animar-saida p {
+    animation: fadeOutUp 0.6s ease forwards;
+}
+
+@keyframes cardFadeOut {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+}
+
+.card-saindo {
+    animation: cardFadeOut 0.4s ease forwards;
 }
